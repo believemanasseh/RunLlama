@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "runllama"
+version = "0.1.0"
+description = "Simple CLI runner for Ollama (LLM) models"
+authors = ["Manasseh <believemanasseh@gmail.com>"]
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Operating System :: OS Independent",
+    "Development Status :: 3 - Alpha"
+]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+ollama = "0.4.7"
+click = "8.1.8"
+
+[tool.poetry.scripts]
+runllama = "src.main:runner"
+
+[tool.poetry.urls]
+homepage = "https://github.com/pypa/runllama"
+issues = "https://github.com/pypa/runllama/issues"
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
