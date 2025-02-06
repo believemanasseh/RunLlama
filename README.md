@@ -28,7 +28,7 @@ Build and run ollama server docker container
 
 ```bash
 docker build -t runllama .
-docker run -p 11434:11434 -d --name runllama runllama 
+docker run -d -p 11434:11434 -v ollama:/app/.ollama --name runllama runllama 
 ```
 
 Install dependencies
