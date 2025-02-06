@@ -1,3 +1,5 @@
+import time
+
 import click
 from ollama import ResponseError
 from ollama import pull as pull_model
@@ -28,11 +30,18 @@ def query(model: str, prompt: str) -> None:
     except ResponseError as e:
         click.echo(e)
         if e.status_code == 404:
+            click.echo(f"Pulling model [{model}]...")
             pull_model(model)  # Pulls model from registry
-            response = get_chat_response(model, prompt)
+            time.sleep(5)
+            try:
+                response = get_chat_response(model, prompt)
+            except ResponseError as e:
+                click.echo(e)
+                click.echo("Exiting...")
+                exit(1)
     except Exception as e:
         click.echo(e)
-        exit()
+        exit(1)
 
     click.echo(response["message"]["content"])
 
@@ -44,9 +53,10 @@ def pull(model: str):
     try:
         click.echo(f"Pulling model: {model}")
         pull_model(model)
+        click.echo("Model pulled successfully!")
     except Exception as e:
         click.echo(e)
-        exit()
+        exit(1)
 
 
 if __name__ == "__main__":
