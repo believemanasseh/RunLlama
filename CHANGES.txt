@@ -1,8 +1,8 @@
 # Changelog for RunLlama
 ========================
 
-## [0.1.0] - 2025-02-06
+## [0.1.0] - 2025-02-07
 ### Initial Release
 - Basic text generation functionality.
-- Support for Llama 2 models.
+- Support for all Ollama  models.
 - CLI interface for easy execution.
