@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "runllama"
-version = "0.1.6"
+version = "0.1.7"
 description = "Simple CLI runner for Ollama (LLM) models"
 authors = ["Manasseh <believemanasseh@gmail.com>"]
 classifiers = [
