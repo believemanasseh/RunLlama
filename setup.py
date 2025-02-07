@@ -7,7 +7,7 @@ with open("README.md", encoding="utf-8") as fh:
 
 setup(
 	name="runllama",
-	version="0.1.4",
+	version="0.1.5",
 	author="Believe Manasseh",
 	author_email="believemanasseh@gmail.com",
 	description="Simple CLI runner for Ollama (LLM) models",
