@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "runllama"
-version = "0.1.0"
+version = "0.1.1"
 description = "Simple CLI runner for Ollama (LLM) models"
 authors = ["Manasseh <believemanasseh@gmail.com>"]
 classifiers = [
@@ -21,12 +21,15 @@ python = "^3.10"
 ollama = "0.4.7"
 click = "8.1.8"
 
+[tool.poetry.dev-dependencies]
+ruff = "0.9.5"
+
 [tool.poetry.scripts]
 runllama = "src.main:runner"
 
 [tool.poetry.urls]
-homepage = "https://github.com/pypa/runllama"
-issues = "https://github.com/pypa/runllama/issues"
+homepage = "https://github.com/believemanasseh/RunLlama"
+issues = "https://github.com/believemanasseh/RunLlama/issues"
 
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]
