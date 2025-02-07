@@ -48,4 +48,4 @@ python src/main.py --help
 
 ## License
 
-The extension source code is licensed under the MIT License (see [LICENSE](LICENSE)).
+The source code is licensed under the MIT License (see [LICENSE](LICENSE)).
