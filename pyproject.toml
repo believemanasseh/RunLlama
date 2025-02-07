@@ -27,11 +27,6 @@ ruff = "0.9.5"
 [tool.poetry.scripts]
 runllama = "src.main:runner"
 
-[[tool.poetry.source]]
-name = "github"
-url = "https://maven.pkg.github.com/belivemanasseh/RunLlama"
-secondary = true
-
 [tool.poetry.urls]
 homepage = "https://github.com/believemanasseh/RunLlama"
 issues = "https://github.com/believemanasseh/RunLlama/issues"
