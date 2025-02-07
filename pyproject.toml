@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "runllama"
-version = "0.1.3"
+version = "0.1.4"
 description = "Simple CLI runner for Ollama (LLM) models"
 authors = ["Manasseh <believemanasseh@gmail.com>"]
 classifiers = [
@@ -26,6 +26,11 @@ ruff = "0.9.5"
 
 [tool.poetry.scripts]
 runllama = "src.main:runner"
+
+[[tool.poetry.source]]
+name = "github"
+url = "https://maven.pkg.github.com/belivemanasseh/RunLlama"
+secondary = true
 
 [tool.poetry.urls]
 homepage = "https://github.com/believemanasseh/RunLlama"

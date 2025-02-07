@@ -15,9 +15,13 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/runllama/
     permissions:
       packages: write
       contents: read
+      id-token: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -39,11 +43,11 @@ jobs:
       - name: Publish to PyPI
         run: poetry publish --username __token__ --password ${{ secrets.PYPI_API_TOKEN }}
 
-      - name: Publish to GitHub Packages
-        run: |
-          poetry config repositories.github https://upload.pypi.org/legacy/
-          poetry config http-basic.github ${{ secrets.GH_USERNAME }} ${{ secrets.GH_TOKEN }}
-          poetry publish --repository github
+      # - name: Publish to GitHub Packages
+      #   run: |
+      #     poetry config repositories.github https://upload.pypi.org/legacy/
+      #     poetry config http-basic.github ${{ secrets.GH_USERNAME }} ${{ secrets.GH_TOKEN }}
+      #     poetry publish --repository github
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
