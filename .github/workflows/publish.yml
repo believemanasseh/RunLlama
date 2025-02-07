@@ -1,0 +1,42 @@
+name: Publish to PyPI & GitHub Packages
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  pull_request:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: pip install poetry twine
+      
+      - name: Clean previous builds
+        run: rm -rf dist/
+
+      - name: Build package
+        run: poetry build
+
+      - name: Publish to PyPI
+        run: poetry publish --username __token__ --password ${{ secrets.PYPI_API_TOKEN }}
+
+      - name: Publish to GitHub Packages
+        run: twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
+        env:
+          TWINE_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
