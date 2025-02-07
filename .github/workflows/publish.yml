@@ -42,7 +42,8 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           oidc: true
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Publish to GitHub Packages
         run: |
