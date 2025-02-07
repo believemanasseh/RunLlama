@@ -2,6 +2,8 @@
 
 Simple CLI tool for [Ollama (LLM) models](https://ollama.com/search).
 
+[![PyPI Version](https://img.shields.io/pypi/v/runllama.svg)](https://pypi.org/project/runllama/)
+
 ## Installation
 
 Install via pip:
