@@ -41,11 +41,8 @@ jobs:
 
       - name: Publish to GitHub Packages
         run: |
-          poetry config repositories.github "https://upload.github.com/believemanasseh/runllama/"
-          twine upload --repository-url https://upload.github.com/believemanasseh/runllama/ dist/*
-        env:
-          TWINE_USERNAME: ${{ secrets.GITHUB_USERNAME }}
-          TWINE_PASSWORD: ${{ secrets.GH_TOKEN }}
+          poetry config repositories.github https://upload.pypi.org/legacy/
+          poetry publish --repository github --username ${{ secrets.GITHUB_USERNAME }} --password ${{ secrets.GH_TOKEN }}
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
