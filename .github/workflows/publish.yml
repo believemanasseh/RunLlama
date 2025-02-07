@@ -44,9 +44,9 @@ jobs:
           password: ${{ secrets.PYPI_API_TOKEN }}
 
       - name: Publish to GitHub Packages
-        run: |
-          poetry config repositories.github https://upload.pypi.org/legacy/
-          poetry publish --repository github
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://upload.pypi.org/legacy/
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
