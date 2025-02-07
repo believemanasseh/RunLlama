@@ -42,7 +42,8 @@ jobs:
       - name: Publish to GitHub Packages
         run: |
           poetry config repositories.github https://upload.pypi.org/legacy/
-          poetry publish --repository github --username ${{ secrets.GH_USERNAME }} --password ${{ secrets.GH_TOKEN }}
+          poetry config http-basic.github ${{ secrets.GH_USERNAME }} ${{ secrets.GH_TOKEN }}
+          poetry publish --repository github
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
