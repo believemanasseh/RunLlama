@@ -28,12 +28,16 @@ def query(model: str, prompt: str) -> None:
 	except ResponseError as e:
 		click.echo(e)
 		if e.status_code == HTTPStatus.NOT_FOUND:
-			click.echo(f"Pulling model [{model}]...")
-			pull_model(model)  # Pulls model from registry
-			time.sleep(5)
 			try:
+				click.echo(f"Pulling model [{model}]...")
+				pull_model(model)  # Pulls model from registry
+				time.sleep(5)
 				response = get_chat_response(model, prompt)
 			except ResponseError as e:
+				click.echo(e)
+				click.echo("Exiting...")
+				sys.exit(1)
+			except Exception as e:
 				click.echo(e)
 				click.echo("Exiting...")
 				sys.exit(1)
