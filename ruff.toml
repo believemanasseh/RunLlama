@@ -74,7 +74,8 @@ ignore = [
     "COM812", # Trailing comma
     "D417", # description in docstrings
     "D415", # Allow first line end without period
-    "BLE001" # Allow blind exception
+    "BLE001", # Allow blind exception
+    "S101" # Allow assertions
 ]
 
 [lint.per-file-ignores]
