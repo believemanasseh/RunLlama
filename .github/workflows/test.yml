@@ -26,8 +26,7 @@ jobs:
           python-version: "3.10"
 
       - name: Install dependencies
-        run: pip install pytest
+        run: pip install pytest click
 
       - name: Run test
         run: pytest -v tests/test_*
-        
