@@ -46,6 +46,14 @@ Run Python script
 python src/main.py --help
 ```
 
+## Testing
+
+Before running Pytest, ensure the ollama server is running at port 11434.
+
+```bash
+pytest -v -s tests/test_*
+```
+
 ## License
 
 The source code is licensed under the MIT License (see [LICENSE](LICENSE)).
