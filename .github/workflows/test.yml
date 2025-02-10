@@ -26,7 +26,10 @@ jobs:
           python-version: "3.10"
 
       - name: Install dependencies
-        run: pip install pytest click
+        run: pip install poetry
+
+      - name: Build
+        run: poetry install
 
       - name: Run test
-        run: pytest -v tests/test_*
+        run: poetry run pytest -v tests/test_*
