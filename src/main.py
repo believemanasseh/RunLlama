@@ -8,12 +8,12 @@ import click
 from ollama import ResponseError
 from ollama import pull as pull_model
 
-from . import PROJECT_VERSION
+from . import PACKAGE_VERSION
 from .helpers import get_chat_response
 
 
 @click.group()
-@click.version_option(PROJECT_VERSION, "--version", "-v", message="RunLlama v%(version)s")
+@click.version_option(PACKAGE_VERSION, "--version", "-v", message="RunLlama v%(version)s")
 def runner() -> None:
 	"""Large language model runner"""
 
