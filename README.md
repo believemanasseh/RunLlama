@@ -28,7 +28,7 @@ runllama --help
 
 ## For Development
 
-Build and run ollama server docker container
+Build and run ollama server with docker
 
 ```bash
 docker build -t runllama .
