@@ -2,6 +2,8 @@
 
 Simple CLI tool for [Ollama (LLM) models](https://ollama.com/search).
 
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/yandex/perforator/blob/main/LICENSE)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/runllama?logo=pypi&style=flat&color=blue)](https://pypi.org/project/runllama/)
 [![PyPI Version](https://img.shields.io/pypi/v/runllama.svg)](https://pypi.org/project/runllama/)
 
 ## Installation
