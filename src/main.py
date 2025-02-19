@@ -8,8 +8,8 @@ import click
 from ollama import ResponseError
 from ollama import pull as pull_model
 
-from . import PACKAGE_VERSION
-from .helpers import get_chat_response
+from src import PACKAGE_VERSION
+from src.helpers import get_chat_response
 
 
 @click.group()
@@ -24,28 +24,34 @@ def runner() -> None:
 def query(model: str, prompt: str) -> None:
 	"""Query LLM"""
 	try:
-		response = get_chat_response(model, prompt)
+		stream = get_chat_response(model, prompt)
+		for chunk in stream:
+			click.echo(chunk.message.content, nl=False)
 	except ResponseError as e:
 		click.echo(e)
 		if e.status_code == HTTPStatus.NOT_FOUND:
 			try:
-				click.echo(f"Pulling model [{model}]...")
-				pull_model(model)  # Pulls model from registry
+				# Pulls model from registry
+				click.echo(f"pulling model: {model}")
+				progress = pull_model(model, stream=True)
+				for chunk in progress:
+					click.echo(chunk.status)
+
 				time.sleep(5)
-				response = get_chat_response(model, prompt)
+				stream = get_chat_response(model, prompt)
+				for chunk in stream:
+					click.echo(chunk.message.content, nl=False)
 			except ResponseError as e:
 				click.echo(e)
-				click.echo("Exiting...")
+				click.echo("exiting...")
 				sys.exit(1)
 			except Exception as e:
 				click.echo(e)
-				click.echo("Exiting...")
+				click.echo("exiting...")
 				sys.exit(1)
 	except Exception as e:
 		click.echo(e)
 		sys.exit(1)
-
-	click.echo(response["message"]["content"])
 
 
 @runner.command()
@@ -53,9 +59,11 @@ def query(model: str, prompt: str) -> None:
 def pull(model: str) -> None:
 	"""Pull a model from registry"""
 	try:
-		click.echo(f"Pulling model: {model}")
-		pull_model(model)
-		click.echo("Model pulled successfully!")
+		click.echo(f"pulling model: {model}")
+		progress = pull_model(model, stream=True)
+		for chunk in progress:
+			click.echo(chunk.status)
+		click.echo("model pulled successfully!")
 	except Exception as e:
 		click.echo(e)
 		sys.exit(1)

@@ -1,9 +1,11 @@
 """Basic utility functions."""
 
+from collections.abc import Iterator
+
 from ollama import ChatResponse, chat
 
 
-def get_chat_response(model: str, prompt: str) -> ChatResponse:
+def get_chat_response(model: str, prompt: str) -> Iterator[ChatResponse]:
 	"""Returns chat response."""
 	return chat(
 		model=model,
@@ -13,4 +15,5 @@ def get_chat_response(model: str, prompt: str) -> ChatResponse:
 				"content": prompt,
 			},
 		],
+		stream=True,
 	)
