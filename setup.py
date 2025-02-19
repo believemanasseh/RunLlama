@@ -7,7 +7,7 @@ with open("README.md", encoding="utf-8") as fh:
 
 setup(
 	name="runllama",
-	version="0.1.7",
+	version="0.2.0",
 	author="Believe Manasseh",
 	author_email="believemanasseh@gmail.com",
 	description="Simple CLI runner for Ollama (LLM) models",
@@ -22,7 +22,7 @@ setup(
 		"Programming Language :: Python :: 3.13",
 		"Programming Language :: Python :: 3.14",
 		"Operating System :: OS Independent",
-		"Development Status :: 3 - Alpha",
+		"Development Status :: 5 - Production/Stable",
 	],
 	python_requires=">=3.10",
 )

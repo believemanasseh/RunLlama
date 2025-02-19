@@ -1,8 +1,33 @@
-[tool.poetry]
+[project]
 name = "runllama"
-version = "0.1.7"
+version = "0.2.0"
 description = "Simple CLI runner for Ollama (LLM) models"
-authors = ["Manasseh <believemanasseh@gmail.com>"]
+authors = [
+    { name = "Manasseh", email = "believemanasseh@gmail.com" },
+]
+maintainers = [
+    {name = "Manasseh", email = "believemanasseh@gmail.com"},
+]
+requires-python = ">=3.10"
+dynamic = [ "classifiers" ]
+license = { text = "MIT" }
+readme = "README.md"
+keywords = [
+    "ollama",
+    "llama",
+    "large language model (LLM)",
+    "ai",
+    "artificial intelligence",
+    "machine learning",
+    "natural language processing (NLP)",
+    "conversational ai"
+]
+dependencies = [
+    "ollama (==0.4.7)",
+    "click (==8.1.8)"
+]
+
+[tool.poetry]
 classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -10,25 +35,21 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
     "Operating System :: OS Independent",
-    "Development Status :: 3 - Alpha"
+    "Development Status :: 5 - Production/Stable"
 ]
-license = "MIT"
-readme = "README.md"
 packages = [{ include = "src" }]
 
 [tool.poetry.dependencies]
-python = "^3.10"
-ollama = "0.4.7"
-click = "8.1.8"
+python = ">=3.10,<4.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "0.9.5"
 pytest = "8.3.4"
 
-[tool.poetry.scripts]
+[project.scripts]
 runllama = "src.main:runner"
 
-[tool.poetry.urls]
+[project.urls]
 homepage = "https://github.com/believemanasseh/RunLlama"
 issues = "https://github.com/believemanasseh/RunLlama/issues"
 
